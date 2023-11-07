@@ -9,8 +9,7 @@ class ActiveFields(Field):
     mortgage_buyout = 0
 
     def __init__(self, identification, name, buyout, rent):
-        self.id = identification
-        self.name = name
+        super().__init__(identification, name)
         self.purchase = buyout
         self.rents = rent
         self.mortgage = int(self.purchase / 2)
