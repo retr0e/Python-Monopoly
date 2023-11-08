@@ -12,7 +12,7 @@ class Utility(ActiveFields):
         if self.owner is None:
 
             purchase_decision = input('Czy chcesz kupic: ' + self.name + ' za ' +
-                                      self.purchase + ' PLN? (Y/N: ').lower()
+                                      str(self.purchase) + ' PLN? (Y/N): ').lower()
 
             if purchase_decision == 'y':
                 if player.money >= self.purchase:

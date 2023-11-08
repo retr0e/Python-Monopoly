@@ -17,7 +17,7 @@ class Property(ActiveFields):
         if self.owner is None:
 
             purchase_decision = input('Czy chcesz kupic: ' + self.name + ' za ' +
-                                      self.purchase + ' PLN? (Y/N: ').lower()
+                                      str(self.purchase) + ' PLN? (Y/N): ').lower()
 
             if purchase_decision == 'y':
                 if player.money >= self.purchase:
@@ -62,7 +62,7 @@ class Property(ActiveFields):
                                 print('Nie stac Cie na hotel!')
                     case 2:
                         return
-                
+
             # Gracz nie jest wlasicielem
             else:
                 print('Gracz ' + player.nick + 'znalazl sie na polu ' + self.name +

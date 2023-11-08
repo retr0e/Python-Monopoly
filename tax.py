@@ -8,8 +8,8 @@ class Tax(Field):
         super().__init__(identification, name)
         self.money_hit = money_hit
 
-    def interact(self):
-        super().interact()
+    def interact(self, player, player_list):
+        player.money -= self.money_hit
 
     @staticmethod
     def create_taxes_field():

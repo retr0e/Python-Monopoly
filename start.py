@@ -9,3 +9,7 @@ class Start(Field):
     def interact(self, player, player_list):
         player.money += 200
         input('Otrzymujesz 200 PLN. Nacisnij Enter aby kontynuowac...')
+
+    @staticmethod
+    def start_bonus(player):
+        player.money += 200
