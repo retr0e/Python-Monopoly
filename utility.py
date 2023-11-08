@@ -8,6 +8,9 @@ class Utility(ActiveFields):
         super().__init__(identification, name, buyout, 0)
         self.bonus = 4
 
+    def interact(self):
+        super().interact()
+
     @staticmethod
     def create_utilities():
         utilities = [Utility(12, 'ELEKTROWNIA', 150),

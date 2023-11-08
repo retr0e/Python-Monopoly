@@ -12,6 +12,9 @@ class Property(ActiveFields):
         self.house_price = house_price
         self.hotel_price = house_price * 5
 
+    def interact(self):
+        super().interact()
+
     @staticmethod
     def create_properties():
         properties = [

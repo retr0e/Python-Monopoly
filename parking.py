@@ -7,3 +7,6 @@ class Parking(Field):
 
     def __init__(self):
         super().__init__(20, 'PARKING')
+
+    def interact(self):
+        super().interact()

@@ -6,6 +6,9 @@ class Field:
         self.id = identification
         self.name = name
 
+    def interact(self):
+        print(self.name)
+
     @staticmethod
     def create_fields():
         fields = [Field(2, 'KASA SPOLECZNA'), Field(7, 'SZANSA'),

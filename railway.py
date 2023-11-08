@@ -6,6 +6,9 @@ class Railway(ActiveFields):
     def __init__(self, identification, name, buyout, rent):
         super().__init__(identification, name, buyout, rent)
 
+    def interact(self):
+        super().interact()
+
     @staticmethod
     def create_railways():
         railways = [Railway(5, 'DWORZEC ZACHODNI', 200, [25, 50, 100, 200]),

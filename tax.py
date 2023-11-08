@@ -8,6 +8,9 @@ class Tax(Field):
         super().__init__(identification, name)
         self.money_hit = money_hit
 
+    def interact(self):
+        super().interact()
+
     @staticmethod
     def create_taxes_field():
         taxes = [Tax(4, 'PODATEK DOCHODOWY', 200),

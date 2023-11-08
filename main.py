@@ -9,18 +9,8 @@ from property import Property
 from tax import Tax
 from utility import Utility
 from railway import Railway
+from app import Game
 from bank import Bank
-
-# ------------ FUNCTIONS ------------
-
-
-def show_menu():
-
-    print('WITAJ W MONOPOLY!')
-    print('1 - Rozpocznij rozgrywke')
-    print('2 - Wczytaj poprzednią rozgrywke')
-    print('3 - Zasady obecnej wersji gry')
-    print('4 - Nie mam czasu na to! Wyjdz.')
 
 
 def create_game_grid():
@@ -41,20 +31,37 @@ def create_game_grid():
         if no_change:
             break
 
-    for y in board:
-        print(y)
     return board
+
+
+def show_menu():
+    print('WITAJ W MONOPOLY!')
+    print('1 - Rozpocznij rozgrywke')
+    print('2 - Wczytaj poprzednią rozgrywke')
+    print('3 - Zasady obecnej wersji gry')
+    print('4 - Nie mam czasu na to! Wyjdz.')
+
+
+def rules():
+    print('ZASADY:')
+    print('Napisze je kiedys')
+
 # ------------ MAIN PROGRAM ------------
 
 
 show_menu()
-play_monopoly = True
+decision = int(input('Wybierz akcje: '))
 
-while play_monopoly:
-    gamers = Player.create_players()
-    grid = create_game_grid()
-    print(gamers)
-    for x in gamers.values():
-        print(x.nick)
+while decision < 1 or decision > 4:
+    decision = int(input('Podaj prawidłową opcje'))
 
-    play_monopoly = False
+match decision:
+    case 1:
+        Game.play_game(Player.create_players(), create_game_grid())
+    case 2:
+        print('Wczytywanie')
+    case 3:
+        rules()
+    case 4:
+        print('Bye bye!')
+        
