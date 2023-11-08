@@ -1,6 +1,5 @@
 # ------------ IMPORTS ------------
 
-from active_fields import ActiveFields
 from field import Field
 from parking import Parking
 from start import Start
@@ -10,7 +9,8 @@ from tax import Tax
 from utility import Utility
 from railway import Railway
 from app import Game
-from bank import Bank
+
+# ------------ FUNCTIONS ------------
 
 
 def create_game_grid():
@@ -46,6 +46,7 @@ def rules():
     print('ZASADY:')
     print('Napisze je kiedys')
 
+
 # ------------ MAIN PROGRAM ------------
 
 
@@ -64,4 +65,3 @@ match decision:
         rules()
     case 4:
         print('Bye bye!')
-        
