@@ -1,5 +1,14 @@
+import pickle
 from bank import Bank
 from start import Start
+
+
+def save_game_state(player_list, game_board):
+    game_state = {'players': player_list, 'board': game_board}
+    with open('monopoly_game_state.pkl', 'wb') as file:
+        pickle.dump(game_state, file)
+    # print('Game saved')
+
 
 class Game:
 
@@ -30,4 +39,5 @@ class Game:
                 run_game = False
 
             print(' ')
+            save_game_state(player_list, game_board)
             turn_control = (turn_control + 1) % len(player_list)

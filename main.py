@@ -1,5 +1,6 @@
 # ------------ IMPORTS ------------
 
+import pickle
 from field import Field
 from parking import Parking
 from start import Start
@@ -47,6 +48,11 @@ def rules():
     print('Napisze je kiedys')
 
 
+def load_game_state():
+    with open('monopoly_game_state.pkl', 'rb') as file:
+        game_state = pickle.load(file)
+    return game_state
+
 # ------------ MAIN PROGRAM ------------
 
 
@@ -60,7 +66,7 @@ match decision:
     case 1:
         Game.play_game(Player.create_players(), create_game_grid())
     case 2:
-        print('Wczytywanie')
+        Game.play_game(load_game_state()['players'], load_game_state()['board'])
     case 3:
         rules()
     case 4:
