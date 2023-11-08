@@ -27,12 +27,13 @@ class Railway(ActiveFields):
 
             if self.owner == player:
                 print('To twoje pole. Nic sie na nim nie da juz zrobic')
-            owner_railways = [prop for prop in player.owned_properties if isinstance(prop, Railway)]
-            rent = 25 * len(owner_railways)
+                return
+
+            rent = self.rents[0 + Railway.calculate_railway_rent(player)]
 
             print('Gracz ' + player.nick + 'znalazl sie na polu ' + self.name +
                   ' ktore nalezy do ' + self.owner.nick + '.')
-            print('Musisz zaplacic ' + rent + ' PLN graczowi -> ' + self.owner.nick)
+            print('Musisz zaplacic ' + str(rent) + ' PLN graczowi -> ' + self.owner.nick)
 
             if player.money >= rent:
                 player.money -= rent
@@ -42,6 +43,14 @@ class Railway(ActiveFields):
                 print('Gracz ' + player.nick + ' nie posiada wystarczajaco pieniedzy.\n')
                 print('Nie jestes w stanie sie utrzymac wiec czeka Cie BANKRUCTWO!')
                 player_list.remove(player)
+
+    @staticmethod
+    def calculate_railway_rent(player):
+        multiplier = 0
+        for proper in player.owned_properties:
+            if isinstance(proper, Railway):
+                multiplier += 1
+        return multiplier
 
     @staticmethod
     def create_railways():
