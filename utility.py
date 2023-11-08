@@ -8,7 +8,7 @@ class Utility(ActiveFields):
         super().__init__(identification, name, buyout, 0)
         self.bonus = 4
 
-    def interact(self):
+    def interact(self, player, player_list):
         super().interact()
 
     @staticmethod

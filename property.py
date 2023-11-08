@@ -12,8 +12,74 @@ class Property(ActiveFields):
         self.house_price = house_price
         self.hotel_price = house_price * 5
 
-    def interact(self):
-        super().interact()
+    def interact(self, player, player_list):
+        # Pole nie nalezy do nikogo
+        if self.owner is None:
+
+            purchase_decision = input('Czy chcesz kupic: ' + self.name + ' za ' +
+                                      self.purchase + ' PLN? (Y/N: ').lower()
+
+            if purchase_decision == 'y':
+                if player.money >= self.purchase:
+                    player.money -= self.purchase
+                    self.owner = player
+                    player.owned_properties.append(self)
+                    print('Zakupiles/as: ' + self.name)
+                else:
+                    print('Nie masz pieniedzy do zakupu tego pola: ' + self.name)
+            else:
+                print('Gracz odrzuca oferte kupna pola: ' + self.name)
+
+        # Pole jest zakupione
+        else:
+
+            rent = self.calculate_rent()
+            # Gracz jest wlascicielem
+            if player == self.owner:
+                # Kupowanie domkow/hotelu
+                print('1 - Kup domek/hotel')
+                print('2 - Nie rob nic')
+
+                decision = int(input('Decyzja: '))
+                while decision < 1 or decision > 2:
+                    decision = int(input('Decyzja: '))
+
+                match decision:
+                    case 1:
+                        if self.houses < 4:
+                            if player.money >= self.house_price:
+                                player.money -= self.house_price
+                                self.houses += 1
+                                print('Kupiles wlasnie domek dla pola ' + self.name)
+                            else:
+                                print('Nie masz wystarczajaco pieniedzy do kupienia domku')
+                        elif self.houses == 4:
+                            if player.money >= self.hotel_price:
+                                player.money -= self.hotel_price
+                                self.houses += 1
+                                print('Zakupiles hotel dla pola ' + self.name)
+                            else:
+                                print('Nie stac Cie na hotel!')
+                    case 2:
+                        return
+                
+            # Gracz nie jest wlasicielem
+            else:
+                print('Gracz ' + player.nick + 'znalazl sie na polu ' + self.name +
+                      ' ktore nalezy do ' + self.owner.nick + '.')
+                print('Musisz zaplacic ' + rent + ' PLN czynszu graczowi -> ' + self.owner.nick)
+
+                if player.money >= rent:
+                    player.money -= rent
+                    self.owner.money += rent
+                else:
+                    # Bankructwo gracza
+                    print('Gracz ' + player.nick + ' nie posiada wystarczajaco pieniedzy.\n')
+                    print('Nie jestes w stanie sie utrzymac wiec czeka Cie BANKRUCTWO!')
+                    player_list.remove(player)
+
+    def calculate_rent(self):
+        return self.rents[self.houses]
 
     @staticmethod
     def create_properties():

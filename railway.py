@@ -6,7 +6,7 @@ class Railway(ActiveFields):
     def __init__(self, identification, name, buyout, rent):
         super().__init__(identification, name, buyout, rent)
 
-    def interact(self):
+    def interact(self, player, player_list):
         super().interact()
 
     @staticmethod

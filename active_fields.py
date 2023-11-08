@@ -15,5 +15,5 @@ class ActiveFields(Field):
         self.mortgage = int(self.purchase / 2)
         self.mortgage_buyout = self.mortgage + (self.mortgage * 0.1)
 
-    def interact(self):
+    def interact(self, player, player_list):
         super().interact()

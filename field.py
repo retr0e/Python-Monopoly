@@ -6,7 +6,7 @@ class Field:
         self.id = identification
         self.name = name
 
-    def interact(self):
+    def interact(self, player, player_list):
         print(self.name)
 
     @staticmethod

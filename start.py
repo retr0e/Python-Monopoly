@@ -6,7 +6,7 @@ class Start(Field):
     def __init__(self):
         super().__init__(0, 'START')
 
-    def interact(self):
+    def interact(self, player, player_list):
         super().interact()
 
     @staticmethod
