@@ -7,7 +7,8 @@ class Field:
         self.name = name
 
     def interact(self, player, player_list):
-        print(self.name)
+        print('Znalazles sie na polu + ' + self.name)
+        input('Nic sie nie dzieje. Nacisnij Enter aby kontynuowac...')
 
     @staticmethod
     def create_fields():
