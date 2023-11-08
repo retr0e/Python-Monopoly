@@ -10,5 +10,7 @@ class Tax(Field):
 
     @staticmethod
     def create_taxes_field():
-        Tax(4, 'PODATEK DOCHODOWY', 200)
-        Tax(38, 'DOMIAR PODATKOWY', 100)
+        taxes = [Tax(4, 'PODATEK DOCHODOWY', 200),
+                 Tax(38, 'DOMIAR PODATKOWY', 100)]
+
+        return taxes

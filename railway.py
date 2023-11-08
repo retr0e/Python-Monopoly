@@ -8,7 +8,9 @@ class Railway(ActiveFields):
 
     @staticmethod
     def create_railways():
-        Railway(5, 'DWORZEC ZACHODNI', 200, [25, 50, 100, 200])
-        Railway(15, 'DWORZEC GDANSKI', 200, [25, 50, 100, 200])
-        Railway(25, 'DWORZEC WSCHODNI', 200, [25, 50, 100, 200])
-        Railway(35, 'DWORZEC CENTRALNY', 200, [25, 50, 100, 200])
+        railways = [Railway(5, 'DWORZEC ZACHODNI', 200, [25, 50, 100, 200]),
+                    Railway(15, 'DWORZEC GDANSKI', 200, [25, 50, 100, 200]),
+                    Railway(25, 'DWORZEC WSCHODNI', 200, [25, 50, 100, 200]),
+                    Railway(35, 'DWORZEC CENTRALNY', 200, [25, 50, 100, 200])]
+
+        return railways

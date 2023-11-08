@@ -10,5 +10,7 @@ class Utility(ActiveFields):
 
     @staticmethod
     def create_utilities():
-        Utility(12, 'ELEKTROWNIA', 150)
-        Utility(28, 'WODOCIAGI', 150)
+        utilities = [Utility(12, 'ELEKTROWNIA', 150),
+                     Utility(28, 'WODOCIAGI', 150)]
+
+        return utilities
