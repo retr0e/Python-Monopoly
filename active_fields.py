@@ -16,4 +16,4 @@ class ActiveFields(Field):
         self.mortgage_buyout = self.mortgage + (self.mortgage * 0.1)
 
     def interact(self, player, player_list):
-        super().interact()
+        super().interact(player, player_list)

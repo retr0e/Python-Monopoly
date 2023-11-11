@@ -22,6 +22,15 @@ class Game:
 
             print('Tura gracza: ' + current_player.nick + ' twoje fundusze: ' + str(current_player.money))
 
+            # Menu przed rozegraniem tury
+            if current_player.owned_properties:
+                print('1 - Handluj z innymi graczami!')
+                print('2 - Kontynuuj rozgrywke')
+                early_round_decision = int(input('Decyzja: '))
+                match early_round_decision:
+                    case 1:
+                        current_player.make_a_deal(player_list)
+
             input('Nacisnij Enter, aby rzucic kostka...')
             dice_roll = current_player.roll_dice()
 
