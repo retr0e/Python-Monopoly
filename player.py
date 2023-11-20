@@ -1,3 +1,5 @@
+from bank import Bank
+
 class Player:
     id = 0
     nick = 'default_name'
@@ -33,12 +35,18 @@ class Player:
             print(str(player.id) + ' - ' + player.nick)
             decision_control_id.append(player.id)
 
-        customer_pick = int(input('Decyzja: '))
         pick_check = False
-
+        customer_pick = -1
         # Sprawdzenie czy id gracza jest mozliwe do operacji
         while not pick_check:
+            customer_pick = int(input('Decyzja: '))
             for x in decision_control_id:
                 if x == customer_pick:
                     pick_check = True
+
+            if not pick_check:
+                print('Nie podałeś właściwego gracza!')
+
+        if customer_pick != -1 and pick_check:
+            Bank.trade_properties(self, player_list[customer_pick])
 
