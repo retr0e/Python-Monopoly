@@ -45,7 +45,7 @@ def show_menu():
 
 def rules():
     print('ZASADY:')
-    print('Napisze je kiedys')
+    print('Bylem ciekaw czy Pan tu zajrzy')
 
 
 def load_game_state():

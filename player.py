@@ -53,3 +53,10 @@ class Player:
         if customer_pick != -1 and pick_check:
             Bank.trade_properties(self, player_list[customer_pick])
 
+    def calculate_value_of_properties(self):
+        total_value = 0
+        for land in self.owned_properties:
+            total_value += land.purchase
+            total_value += land.houses * land.house_price
+
+        return total_value

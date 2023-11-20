@@ -24,24 +24,28 @@ class Game:
 
             # Menu przed rozegraniem tury
             if current_player.owned_properties:
-                print('0 - Wyswietl moje nieruchomosci')
-                print('1 - Handluj z innymi graczami!')
-                print('2 - Poddaj pole hipotece')
-                print('3 - Kontynuuj rozgrywke')
-                early_round_decision = int(input('Decyzja: '))
-                match early_round_decision:
-                    case 0:
-                        Property.show_properties(current_player)
-                    case 1:
-                        current_player.make_a_deal(player_list)
-                    case 2:
-                        Bank.put_on_mortgage(current_player)
+                run_dialog = True
+                while run_dialog:
+                    print('0 - Wyswietl moje nieruchomosci')
+                    print('1 - Handluj z innymi graczami!')
+                    print('2 - Poddaj pole hipotece')
+                    print('3 - Kontynuuj rozgrywke')
+                    early_round_decision = int(input('Decyzja: '))
+                    match early_round_decision:
+                        case 0:
+                            Property.show_properties(current_player)
+                        case 1:
+                            current_player.make_a_deal(player_list)
+                        case 2:
+                            Bank.put_on_mortgage(current_player)
+                        case 3:
+                            run_dialog = False
 
             input('Nacisnij Enter, aby rzucic kostka...')
             dice_roll = current_player.roll_dice()
 
             if current_player.current_position + dice_roll > 40:
-                current_player.money += Start.start_bonus(current_player)
+                Start.start_bonus(current_player)
 
             current_player.current_position = (current_player.current_position + dice_roll) % len(game_board)
 

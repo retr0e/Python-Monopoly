@@ -37,7 +37,7 @@ class Utility(ActiveFields):
             rent = player.roll_dice() * self.bonus
             print('Gracz ' + player.nick + 'znalazl sie na polu ' + self.name +
                   ' ktore nalezy do ' + self.owner.nick + '.')
-            print('Musisz zaplacic ' + rent + ' PLN graczowi -> ' + self.owner.nick)
+            print('Musisz zaplacic ' + str(rent) + ' PLN graczowi -> ' + self.owner.nick)
 
             if player.money >= rent:
                 player.money -= rent
