@@ -7,6 +7,7 @@ class Utility(ActiveFields):
     def __init__(self, identification, name, buyout):
         super().__init__(identification, name, buyout, 0)
         self.bonus = 4
+        self.active = True
 
     def interact(self, player, player_list):
         if self.owner is None:

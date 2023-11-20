@@ -2,15 +2,13 @@ from active_fields import ActiveFields
 
 
 class Property(ActiveFields):
-    houses = 0
-    available_hotel = False
-    hotel_price = 0
-    house_price = 0
-
     def __init__(self, identification, name, buyout, rent, house_price):
         super().__init__(identification, name, buyout, rent)
+        self.available_hotel = False
+        self.houses = 0
         self.house_price = house_price
         self.hotel_price = house_price * 5
+        self.active = True
 
     def interact(self, player, player_list):
         # Pole nie nalezy do nikogo
@@ -80,6 +78,12 @@ class Property(ActiveFields):
 
     def calculate_rent(self):
         return self.rents[self.houses]
+
+
+    @staticmethod
+    def show_properties(player):
+        for land in player.owned_properties:
+            print(land.name)
 
     @staticmethod
     def create_properties():

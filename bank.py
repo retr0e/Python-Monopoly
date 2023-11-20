@@ -35,3 +35,23 @@ class Bank:
             case 2:
                 print('Oferta odrzucona... gra się kontynuje...')
                 return None
+
+    @staticmethod
+    def put_on_mortgage(player):
+        i = 0
+        for prop in player.owned_properties:
+            print(i, ' ', prop.name)
+
+        print(str(i + 1), ' - aby zrezygnowac z opcji')
+        decision = int(input('Ktore pole chcesz poddac hipotece'))
+
+        if decision == i + 1:
+            return
+
+        while decision < 0 or decision > i:
+            decision = int(input('Ktore pole chcesz poddac hipotece'))
+
+        player.money += player.owned_properties[decision].mortgage
+        player.owned_properties.pop(decision)
+
+        print('Posiadlosc znajduje sie juz na hipotece')

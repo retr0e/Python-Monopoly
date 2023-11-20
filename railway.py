@@ -5,6 +5,7 @@ class Railway(ActiveFields):
 
     def __init__(self, identification, name, buyout, rent):
         super().__init__(identification, name, buyout, rent)
+        self.active = True
 
     def interact(self, player, player_list):
         if self.owner is None:

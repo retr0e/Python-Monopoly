@@ -1,7 +1,7 @@
 import pickle
 from bank import Bank
 from start import Start
-
+from property import Property
 
 def save_game_state(player_list, game_board):
     game_state = {'players': player_list, 'board': game_board}
@@ -24,12 +24,18 @@ class Game:
 
             # Menu przed rozegraniem tury
             if current_player.owned_properties:
+                print('0 - Wyswietl moje nieruchomosci')
                 print('1 - Handluj z innymi graczami!')
-                print('2 - Kontynuuj rozgrywke')
+                print('2 - Poddaj pole hipotece')
+                print('3 - Kontynuuj rozgrywke')
                 early_round_decision = int(input('Decyzja: '))
                 match early_round_decision:
+                    case 0:
+                        Property.show_properties(current_player)
                     case 1:
                         current_player.make_a_deal(player_list)
+                    case 2:
+                        Bank.put_on_mortgage(current_player)
 
             input('Nacisnij Enter, aby rzucic kostka...')
             dice_roll = current_player.roll_dice()
