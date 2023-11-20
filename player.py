@@ -1,15 +1,18 @@
 from bank import Bank
 
 class Player:
-    id = 0
-    nick = 'default_name'
-    money = 2000
-    owned_properties = []
-    current_position = 0
+    # id = 0
+    # nick = 'default_name'
+    # money = 2000
+    # owned_properties = []
+    # current_position = 0
 
     def __init__(self, identi, nick_name):
         self.id = identi
         self.nick = nick_name
+        self.money = 2000
+        self.owned_properties = []
+        self.current_position = 0
 
     @staticmethod
     def create_players():
